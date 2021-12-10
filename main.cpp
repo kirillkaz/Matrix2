@@ -1,12 +1,13 @@
 #include <iostream>
 #include <windows.h>
-#include"MatrixMath.cpp"
-#include "MatrixPrint.cpp"
+#include"MatrixMath.h"
+#include "MatrixFilePrint.h"
+#include "MatrixConsolePrint.h"
 using namespace std;
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
-    //srand(time(nullptr));
+    srand(time(nullptr));
     int n=0;
     cout<<"Введите размерность матриц А, В и С"<<endl;
     cin>>n;
@@ -24,15 +25,15 @@ int main() {
     Cmatrix = FillMatrixRand(Cmatrix,n);
 
     cout<< "Матрица С:"<< endl;
-    PrintMatrix(Cmatrix,n);
+    PrintFileMatrix(Cmatrix,n);
     cout<<endl<<"Матрица B:"<< endl;
-    PrintMatrix(Bmatrix,n);
+    PrintFileMatrix(Bmatrix,n);
     cout<<endl;
     cout<<"Сумма всех элементов матрицы С равна "<<GetSumElemMatrix(Cmatrix,n)<<endl;
     cout<<"Колличество нечетных элементов в этой матрице равно "<<GetCountNechetElemsMatrix(Cmatrix,n)<<endl;
     cout<<"минимальное простое число расположенное на главной диагонали равно "<<GetMinElemOnMainDiag(Cmatrix,n)<<" (если это число равно нулю, то его нет)"<<endl;
     Amatrix = MultMatrix(DiffMatrix(Bmatrix,Cmatrix,n), TranspMatrix(Cmatrix,n),n);
     cout<<"матрица А = (В-С)*С(транспонированное) :"<<endl;
-    PrintMatrix(Amatrix,n);
+    PrintFileMatrix(Amatrix,n);
     return 0;
 }

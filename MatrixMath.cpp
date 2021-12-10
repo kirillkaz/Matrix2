@@ -1,4 +1,5 @@
 #include <iostream>
+#include "MatrixMath.h"
 using namespace std;
 
 ///заполняет квадратную матрицу рандомными числами
