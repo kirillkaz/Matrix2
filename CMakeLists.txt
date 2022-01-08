@@ -3,9 +3,13 @@ project(untitled3)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(MATRIX_MATH STATIC MatrixMath.cpp MatrixMath.h )
-add_library(MATRIX_PRINT_STATIC STATIC MatrixConsolePrint.cpp MatrixConsolePrint.h  MatrixFilePrint.cpp MatrixFilePrint.h PrintTo.cpp PrintTo.h)
+if(NOT MODE)
+    set(MODE File)
+endif()
+
+add_library(MATRIX_MATH SHARED MatrixMath.cpp MatrixMath.h )
+add_library(MATRIX${MODE}PRINT SHARED Matrix${MODE}Print.cpp Matrix${MODE}Print.h PrintTo.cpp PrintTo.h)
 add_executable(MAIN main.cpp)
-target_link_libraries(MAIN MATRIX_MATH MATRIX_PRINT_STATIC)
+target_link_libraries(MAIN MATRIX_MATH MATRIX${MODE}PRINT)
 
 
