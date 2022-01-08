@@ -22,7 +22,7 @@ int GetSumElemMatrix(int **Matrix, int size){
 int GetCountNechetElemsMatrix(int **Matrix, int size){
     int nechet=0;
     for (int i=0;i < size;i++)
-        for(int j=0;j < size;j++) if((Matrix[i][j] % 2) == 0) nechet+=1;
+        for(int j=0;j < size;j++) if((Matrix[i][j] % 2) == 1) nechet+=1;
     return nechet;
 }
 
